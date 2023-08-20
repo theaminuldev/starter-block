@@ -1,14 +1,13 @@
+import { SubPanelsStack } from ''; // Adjust the path accordingly
+import { } from ".?";
 import { useBlockProps } from '@wordpress/block-editor';
 import { registerBlockType } from '@wordpress/blocks';
 import { Component } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
-import { SubPanelsStack }  from ''; // Adjust the path accordingly
-import {  } from ".?";
 
 import './editor.scss';
 import './style.scss';
 
-// import metadata from './block.json';
 
 class Block extends Component {
 	constructor() {
@@ -65,7 +64,7 @@ class Block extends Component {
 				dynamic: {
 					active: true,
 				},
-				placeholder: __( 'https://your-link.com', 'block' ),
+				placeholder: __('https://your-link.com', 'block'),
 				separator: 'before',
 			}
 		)
