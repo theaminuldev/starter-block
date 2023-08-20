@@ -1,0 +1,1 @@
+{"version":3,"file":"block/button/view.js","mappings":";;;;;AAAA;AACAA,OAAO,CAACC,GAAG,CAAE,sDAAuD,CAAC;AACrE,8B","sources":["webpack://starter-block/./src/block/button/view.js"],"sourcesContent":["/* eslint-disable no-console */\nconsole.log( 'Hello World! (from create-block-starter-block block)' );\n/* eslint-enable no-console */\n"],"names":["console","log"],"sourceRoot":""}
