@@ -1,6 +1,7 @@
 class SubPanelsStack {
     constructor(parent) {
         this.parent = parent;
+        // console.log(parent);
     }
 
     getId() {
@@ -17,7 +18,10 @@ class SubPanelsStack {
     }
 
     addPanel(id, args, options = {}) {
+        // console.log(id);
+        // console.log(args);
         return this.parent.addPanel(this.getPanelId(id), args, options);
+
     }
 
     updatePanel(id, args, options = {}) {

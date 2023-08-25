@@ -2,6 +2,76 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/base/SubPanelsStack.js":
+/*!************************************!*\
+  !*** ./src/base/SubPanelsStack.js ***!
+  \************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+class SubPanelsStack {
+  constructor(parent) {
+    this.parent = parent;
+    // console.log(parent);
+  }
+
+  getId() {
+    // Implement your logic here
+  }
+  getTitle() {
+    // Implement your logic here
+  }
+  getPanelId(PanelBaseId) {
+    // Implement your logic here
+    return PanelBaseId;
+  }
+  addPanel(id, args, options = {}) {
+    // console.log(id);
+    // console.log(args);
+    return this.parent.addPanel(this.getPanelId(id), args, options);
+  }
+  updatePanel(id, args, options = {}) {
+    this.parent.updatePanel(this.getPanelId(id), args, options);
+  }
+  removePanel(id) {
+    this.parent.removePanel(this.getPanelId(id));
+  }
+  addGroupPanel(groupName, args, options = {}) {
+    args.name = this.getPanelId(args.name);
+    this.parent.addGroupPanel(groupName, args, options);
+  }
+  addResponsivePanel(id, args, options = {}) {
+    this.parent.addResponsivePanel(this.getPanelId(id), args, options);
+  }
+  updateResponsivePanel(id, args) {
+    this.parent.updateResponsivePanel(this.getPanelId(id), args);
+  }
+  removeResponsivePanel(id) {
+    this.parent.removeResponsivePanel(this.getPanelId(id));
+  }
+  startPanelsSection(id, args = {}) {
+    this.parent.startPanelsSection(this.getPanelId(id), args);
+  }
+  endPanelsSection() {
+    this.parent.endPanelsSection();
+  }
+  startPanelsTabs(id) {
+    this.parent.startPanelsTabs(this.getPanelId(id));
+  }
+  startPanelsTab(id, args) {
+    this.parent.startPanelsTab(this.getPanelId(id), args);
+  }
+  endPanelsTab() {
+    this.parent.endPanelsTab();
+  }
+  endPanelsTabs() {
+    this.parent.endPanelsTabs();
+  }
+}
+/* harmony default export */ __webpack_exports__["default"] = (SubPanelsStack);
+
+/***/ }),
+
 /***/ "./src/block/button/index.js":
 /*!***********************************!*\
   !*** ./src/block/button/index.js ***!
@@ -11,90 +81,94 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
-/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__);
-Object(function webpackMissingModule() { var e = new Error("Cannot find module ''"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! .? */ "./src/block/button/index.js?");
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./editor.scss */ "./src/block/button/editor.scss");
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./style.scss */ "./src/block/button/style.scss");
+/* harmony import */ var _base_SubPanelsStack__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../base/SubPanelsStack */ "./src/base/SubPanelsStack.js");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./editor.scss */ "./src/block/button/editor.scss");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./style.scss */ "./src/block/button/style.scss");
 
 
 
 
 
- // Adjust the path accordingly
 
 
-
-
-// import metadata from './block.json';
 
 class Block extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Component {
   constructor() {
-    super(...arguments);
-    console.log(this);
+    super();
+    // console.log(this);
     // this.registerControls = this.registerControls.bind(this);
-    this.addPanel = new Object(function webpackMissingModule() { var e = new Error("Cannot find module ''"); e.code = 'MODULE_NOT_FOUND'; throw e; }())(this).addPanel; // Extract the method
+    // this.subPanelsStack = new SubPanelsStack(this);
+    this.addPanel = new _base_SubPanelsStack__WEBPACK_IMPORTED_MODULE_1__["default"](this).addPanel;
     this.init();
   }
   init = () => {
-    (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__.registerBlockType)('create-block/starter-block-button', {
+    (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_3__.registerBlockType)('create-block/starter-block-button', {
       // Localize title using wp.i18n.__()
       apiVersion: 3,
-      description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Example block scaffolded with Create Block tool.'),
-      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Block Button'),
+      description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Example block scaffolded with Create Block tool.'),
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Block Button'),
       // Category Options: common, formatting, layout, widgets, embed
       category: 'common',
       // Dashicons Options – https://goo.gl/aTM1DQ
       icon: 'wordpress-alt',
       // Limit to 3 Keywords / Phrases
-      keywords: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Example'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Block Button'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Code Samples')],
+      keywords: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Example'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Block Button'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Code Samples')],
       textdomain: "block",
       edit: this.editBlock,
       save: this.saveBlock
     });
+    // this.addPanel = new SubPanelsStack(this).addPanel; // Extract the method
     this.registerPanels(); // Call the registerControls method
   };
 
   registerPanels = () => {
     this.addPanel('BlockButtonTitle', {
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Title', 'block'),
-      type: ControlsManager.TEXT,
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Title', 'block'),
+      type: '',
       label_block: true,
       dynamic: {
         active: true
       },
-      default: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Cool Number', 'block'),
-      placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Cool Number', 'block')
+      default: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Cool Number', 'block'),
+      placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Cool Number', 'block')
     });
-    this.addPanel('BlockButtonUrl', {
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Url', 'block'),
-      type: ControlsManager.URL,
-      label_block: true,
-      dynamic: {
-        active: true
-      },
-      placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('https://your-link.com', 'block'),
-      separator: 'before'
-    });
-    this.addPanel('BlockButtonIcon', {
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Icon', 'block'),
-      type: ControlsManager.ICON,
-      label_block: true,
-      dynamic: {
-        active: true
-      },
-      fa4compatibility: 'icon',
-      default: {
-        value: 'fas fa-star',
-        library: 'fa-solid'
-      }
-    });
+    // this.addPanel(
+    // 	'BlockButtonUrl',
+    // 	{
+    // 		label: __('Url', 'block'),
+    // 		type: ControlsManager.URL,
+    // 		label_block: true,
+    // 		dynamic: {
+    // 			active: true,
+    // 		},
+    // 		placeholder: __('https://your-link.com', 'block'),
+    // 		separator: 'before',
+    // 	}
+    // )
+    // this.addPanel(
+    // 	'BlockButtonIcon',
+    // 	{
+    // 		label: __('Icon', 'block'),
+    // 		type: ControlsManager.ICON,
+    // 		label_block: true,
+    // 		dynamic: {
+    // 			active: true,
+    // 		},
+    // 		fa4compatibility: 'icon',
+    // 		default: {
+    // 			value: 'fas fa-star',
+    // 			library: 'fa-solid',
+    // 		},
+    // 	}
+    // )
   };
+
   editBlock = () => {
     return this.renderBlock();
   };
@@ -103,117 +177,8 @@ class Block extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Component {
   };
   renderBlock = (isEditor = true) => {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-      ...(isEditor ? (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)() : _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save())
-    }, isEditor ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Starter Block – hello from the editor!', 'starter-block') : 'Starter Block – hello from the saved content!');
-  };
-}
-new Block();
-
-/***/ }),
-
-/***/ "./src/block/button/index.js?":
-/*!************************************!*\
-  !*** ./src/block/button/index.js? ***!
-  \************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
-/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__);
-Object(function webpackMissingModule() { var e = new Error("Cannot find module ''"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! .? */ "./src/block/button/index.js?");
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./editor.scss */ "./src/block/button/editor.scss");
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./style.scss */ "./src/block/button/style.scss");
-
-
-
-
-
- // Adjust the path accordingly
-
-
-
-
-// import metadata from './block.json';
-
-class Block extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Component {
-  constructor() {
-    super(...arguments);
-    console.log(this);
-    // this.registerControls = this.registerControls.bind(this);
-    this.addPanel = new Object(function webpackMissingModule() { var e = new Error("Cannot find module ''"); e.code = 'MODULE_NOT_FOUND'; throw e; }())(this).addPanel; // Extract the method
-    this.init();
-  }
-  init = () => {
-    (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__.registerBlockType)('create-block/starter-block-button', {
-      // Localize title using wp.i18n.__()
-      apiVersion: 3,
-      description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Example block scaffolded with Create Block tool.'),
-      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Block Button'),
-      // Category Options: common, formatting, layout, widgets, embed
-      category: 'common',
-      // Dashicons Options – https://goo.gl/aTM1DQ
-      icon: 'wordpress-alt',
-      // Limit to 3 Keywords / Phrases
-      keywords: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Example'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Block Button'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Code Samples')],
-      textdomain: "block",
-      edit: this.editBlock,
-      save: this.saveBlock
-    });
-    this.registerPanels(); // Call the registerControls method
-  };
-
-  registerPanels = () => {
-    this.addPanel('BlockButtonTitle', {
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Title', 'block'),
-      type: ControlsManager.TEXT,
-      label_block: true,
-      dynamic: {
-        active: true
-      },
-      default: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Cool Number', 'block'),
-      placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Cool Number', 'block')
-    });
-    this.addPanel('BlockButtonUrl', {
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Url', 'block'),
-      type: ControlsManager.URL,
-      label_block: true,
-      dynamic: {
-        active: true
-      },
-      placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('https://your-link.com', 'block'),
-      separator: 'before'
-    });
-    this.addPanel('BlockButtonIcon', {
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Icon', 'block'),
-      type: ControlsManager.ICON,
-      label_block: true,
-      dynamic: {
-        active: true
-      },
-      fa4compatibility: 'icon',
-      default: {
-        value: 'fas fa-star',
-        library: 'fa-solid'
-      }
-    });
-  };
-  editBlock = () => {
-    return this.renderBlock();
-  };
-  saveBlock = () => {
-    return this.renderBlock(false);
-  };
-  renderBlock = (isEditor = true) => {
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-      ...(isEditor ? (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)() : _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save())
-    }, isEditor ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Starter Block – hello from the editor!', 'starter-block') : 'Starter Block – hello from the saved content!');
+      ...(isEditor ? (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)() : _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps.save())
+    }, isEditor ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Starter Block – hello from the editor!', 'starter-block') : 'Starter Block – hello from the saved content!');
   };
 }
 new Block();
