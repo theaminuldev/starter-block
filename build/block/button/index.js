@@ -12,7 +12,7 @@ __webpack_require__.r(__webpack_exports__);
 class SubPanelsStack {
   constructor(parent) {
     this.parent = parent;
-    // console.log(parent);
+    //console.log(parent);
   }
 
   getId() {
@@ -21,9 +21,9 @@ class SubPanelsStack {
   getTitle() {
     // Implement your logic here
   }
-  getPanelId(PanelBaseId) {
+  getPanelId(panelBaseId) {
     // Implement your logic here
-    return PanelBaseId;
+    return panelBaseId;
   }
   addPanel(id, args, options = {}) {
     // console.log(id);
@@ -104,7 +104,9 @@ class Block extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Component {
     // console.log(this);
     // this.registerControls = this.registerControls.bind(this);
     // this.subPanelsStack = new SubPanelsStack(this);
-    this.addPanel = new _base_SubPanelsStack__WEBPACK_IMPORTED_MODULE_1__["default"](this).addPanel;
+    // this.addPanel = new SubPanelsStack(this).addPanel
+    this.subPanelsStack = new _base_SubPanelsStack__WEBPACK_IMPORTED_MODULE_1__["default"](this);
+    this.addPanel = this.subPanelsStack.addPanel.bind(this.subPanelsStack); // Bind the method
     this.init();
   }
   init = () => {

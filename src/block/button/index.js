@@ -15,8 +15,10 @@ class Block extends Component {
 		// console.log(this);
 		// this.registerControls = this.registerControls.bind(this);
 		// this.subPanelsStack = new SubPanelsStack(this);
-		this.addPanel = new SubPanelsStack(this).addPanel
-		this.init();
+		// this.addPanel = new SubPanelsStack(this).addPanel
+		this.subPanelsStack = new SubPanelsStack(this);
+        this.addPanel = this.subPanelsStack.addPanel.bind(this.subPanelsStack); // Bind the method
+        this.init();
 	}
 
 	init = () => {
